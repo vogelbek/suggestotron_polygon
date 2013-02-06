@@ -1,0 +1,22 @@
+%h1 Listing topics
+
+%table
+  %tr
+    %th Title
+    %th Number of Votes
+    %th 
+    %th 
+
+  - @topics.each do |topic|
+    %tr
+      %td
+        = link_to topic.title, topic
+      %td
+        = pluralize(topic.votes.length, "vote")
+      %td
+        = button_to '+1', votes_path(topic_id: topic.id), method: :post
+      %td
+        = link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' }
+
+
+= link_to 'New Topic', new_topic_path
