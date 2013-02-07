@@ -4,6 +4,7 @@ class PointMath
 
   def initialize(topics)
     @topics = topics
+    @center = SvgCenter.new(@topics).largest_topic
     @topic_xys = {}
     calculate_topic_xys
   end
@@ -19,11 +20,11 @@ private
   end
 
   def calculate_x(t, topic_angle)
-    Math.cos(topic_angle) * t.votes.size + 15
+    Math.cos(topic_angle) * t.votes.size + @center
   end
 
   def calculate_y(t, topic_angle)
-    Math.sin(topic_angle) * t.votes.size + 15
+    Math.sin(topic_angle) * t.votes.size + @center
   end
 
   def calculate_topic_xys

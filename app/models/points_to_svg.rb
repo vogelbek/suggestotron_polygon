@@ -1,4 +1,4 @@
-class PointToSvg
+class PointsToSvg
   
 
   def initialize(topic_xys)

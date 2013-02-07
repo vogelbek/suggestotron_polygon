@@ -22,7 +22,10 @@
 = link_to 'New Topic', new_topic_path
 
 - xys = PointMath.new(@topics).topic_xys
-- str = PointToSvg.new(xys).to_s
-%svg{height: "190", version: "1.1", xmlns: "http://www.w3.org/2000/svg"}
+- str = PointsToSvg.new(xys).to_s
+- center = SvgCenter.new(@topics).largest_topic.to_s
+- height = SvgCenter.new(@topics).svg_canvas_size.to_s
+%svg{height: height, version: "1.1", xmlns: "http://www.w3.org/2000/svg"}
   %polygon{points: str, style: "fill:tan;stroke:brown;stroke-width:3;fill-rule:evenodd;"}
+  %circle{cx: center, cy: center, r: "2", stroke: "black"}
 
